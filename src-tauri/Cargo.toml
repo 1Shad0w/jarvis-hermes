@@ -1,0 +1,24 @@
+[package]
+name = "jarvis-hermes"
+version = "0.1.0"
+description = "Native Jarvis-style frontend for Hermes Agent"
+authors = ["You"]
+edition = "2021"
+
+[lib]
+name = "jarvis_hermes_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+rusqlite = { version = "0.32", features = ["bundled"] }
+chrono = { version = "0.4", features = ["serde"] }
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
